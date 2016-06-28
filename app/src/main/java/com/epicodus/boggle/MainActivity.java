@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import butterknife.Bind;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     String letters = "";
     String puzzleLetters;
+    ArrayList<String> wordList = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,13 +65,18 @@ public class MainActivity extends AppCompatActivity {
                Log.d(TAG, puzzleLetters);
 
                if (wordChars.length >= 3) {
+                   int i = 0;
                    for (char c : wordChars) {
                        StringBuilder sb = new StringBuilder(tempLetters);
                        String test = "" + tempLetters.indexOf(c);
                        if (tempLetters.indexOf(c) > -1) {
                            sb.deleteCharAt(tempLetters.indexOf(c));
                            tempLetters = sb.toString();
-                            Log.d(TAG, tempLetters);
+                           i++;
+                           if (i == wordChars.length) {
+                               wordList.add(word);
+                               Log.d(TAG, String.valueOf(wordList));
+                           }
                        } else {
                            Toast.makeText(MainActivity.this, "Invalid Answer!", Toast.LENGTH_LONG).show();
                        }
