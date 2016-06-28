@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.lettersDisplay) TextView mLettersDisplay;
     @Bind(R.id.userInput) EditText mUserInput;
     private static final String TAG = MainActivity.class.getSimpleName();
+    String letters = "";
+    String puzzleLetters;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String alphabet = "abcdefghijklmnopqrstuvwxyz";
                 final String vowels = "aeiou";
-                String letters = "";
                 char letter;
 
                 Random r = new Random();
@@ -46,14 +48,35 @@ public class MainActivity extends AppCompatActivity {
                     letters = letters + letter;
                     mLettersDisplay.setText(letters);
                 }
+                puzzleLetters = letters;
+                letters = "";
             }
         });
 
        mSubmitAnswerButton.setOnClickListener(new View.OnClickListener() {
+           char[] wordChars;
            @Override
            public void onClick(View v) {
                String word = mUserInput.getText().toString();
-               Log.d(TAG, word);
+               String tempLetters = puzzleLetters;
+               wordChars = word.toCharArray();
+               Log.d(TAG, puzzleLetters);
+
+               if (wordChars.length >= 3) {
+                   for (char c : wordChars) {
+                       StringBuilder sb = new StringBuilder(tempLetters);
+                       String test = "" + tempLetters.indexOf(c);
+                       if (tempLetters.indexOf(c) > -1) {
+                           sb.deleteCharAt(tempLetters.indexOf(c));
+                           tempLetters = sb.toString();
+                            Log.d(TAG, tempLetters);
+                       } else {
+                           Toast.makeText(MainActivity.this, "Invalid Answer!", Toast.LENGTH_LONG).show();
+                       }
+                   }
+               } else {
+                   Toast.makeText(MainActivity.this, "Invalid Answer!", Toast.LENGTH_LONG).show();
+               }
            }
        });
     }
