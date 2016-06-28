@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -14,7 +15,9 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
     @Bind(R.id.rollDiceButton) Button mRollDiceButton;
+    @Bind(R.id.submitAnswerButton) Button mSubmitAnswerButton;
     @Bind(R.id.lettersDisplay) TextView mLettersDisplay;
+    @Bind(R.id.userInput) EditText mUserInput;
     private static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
@@ -45,5 +48,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+       mSubmitAnswerButton.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               String word = mUserInput.getText().toString();
+               Log.d(TAG, word);
+           }
+       });
     }
 }

@@ -43,28 +43,28 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:text="Enter word here"
+        android:id="@+id/userInput"
+        android:hint="Enter Word Here"
         android:textSize="40dp"
         android:background="#dfdfdf"
-        android:layout_above="@+id/button2"
+        android:layout_above="@+id/submitAnswerButton"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit answer"
-        android:id="@+id/button2"
+        android:id="@+id/submitAnswerButton"
         android:textSize="20dp"
         android:background="#ffec1a"
-        android:layout_above="@+id/button3"
+        android:layout_above="@+id/endRoundButton"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="End Round"
-        android:id="@+id/button3"
+        android:id="@+id/endRoundButton"
         android:textSize="40dp"
         android:background="#fb0202"
         android:textColor="#ffffff"
