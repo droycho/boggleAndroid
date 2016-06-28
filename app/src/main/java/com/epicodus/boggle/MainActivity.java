@@ -1,5 +1,6 @@
 package com.epicodus.boggle;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
     @Bind(R.id.rollDiceButton) Button mRollDiceButton;
     @Bind(R.id.submitAnswerButton) Button mSubmitAnswerButton;
+    @Bind(R.id.endRoundButton) Button mEndRoundButton;
     @Bind(R.id.lettersDisplay) TextView mLettersDisplay;
     @Bind(R.id.userInput) EditText mUserInput;
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -86,5 +88,14 @@ public class MainActivity extends AppCompatActivity {
                }
            }
        });
+
+        mEndRoundButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ResultsActivity.class);
+                intent.putExtra("wordList", wordList);
+                startActivity(intent);
+            }
+        });
     }
 }
