@@ -34,11 +34,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="random letters display"
-        android:id="@+id/textView2"
-        android:layout_marginTop="28dp"
+        android:id="@+id/lettersDisplay"
         android:textSize="30dp"
         android:background="#d6d6d6"
-        android:layout_below="@+id/button"
+        android:layout_below="@+id/rollDiceButton"
         android:layout_centerHorizontal="true" />
 
     <EditText
