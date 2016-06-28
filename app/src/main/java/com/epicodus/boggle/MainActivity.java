@@ -31,12 +31,16 @@ public class MainActivity extends AppCompatActivity {
                 final String alphabet = "abcdefghijklmnopqrstuvwxyz";
                 final String vowels = "aeiou";
                 String letters = "";
+                char letter;
 
                 Random r = new Random();
                 for (int i = 0; i < 8; i++) {
-                    char letter = alphabet.charAt(r.nextInt(26));
-                    String outputLetter = Character.toString(letter);
-                    letters= letters + letter;
+                    if (i < 2) {
+                        letter = vowels.charAt(r.nextInt(5));
+                    } else {
+                        letter = alphabet.charAt(r.nextInt(26));
+                    }
+                    letters = letters + letter;
                     mLettersDisplay.setText(letters);
                 }
             }
